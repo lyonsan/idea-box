@@ -1,24 +1,21 @@
-# README
+# アプリ概要
+アイデアを管理するAPI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# データベース設計
 
-Things you may want to cover:
+### categoriesテーブル
 
-* Ruby version
+| Column             | Type     | option       |
+|--------------------|----------|--------------|
+| name               | string   | null: false  |
+#### Association
+- has_many: ideas
 
-* System dependencies
+### ideasテーブル
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+| Column             | Type       | option                          |
+|--------------------|------------|---------------------------------|
+| category           | references | null: false, foreign_key: true  |
+| body               | text       | null: false                     |
+#### Association
+- belongs_to: category
